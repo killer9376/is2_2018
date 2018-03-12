@@ -5,6 +5,7 @@
  */
 package service;
 
+import java.lang.reflect.Field;
 import java.util.List;
 import javax.persistence.EntityManager;
 
@@ -27,7 +28,7 @@ public abstract class AbstractFacade<T> {
     }
 
     public void edit(T entity) {
-        getEntityManager().merge(entity);
+            getEntityManager().merge(entity);     
     }
 
     public void remove(T entity) {

@@ -8,7 +8,7 @@ import modelos.Backlog;
 import modelos.Sprints;
 import modelos.Usuarios;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-03-10T19:10:05")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-03-11T14:59:37")
 @StaticMetamodel(UserStories.class)
 public class UserStories_ { 
 
