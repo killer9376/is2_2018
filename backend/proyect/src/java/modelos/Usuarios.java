@@ -41,6 +41,10 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Usuarios.findByApellido", query = "SELECT u FROM Usuarios u WHERE u.apellido = :apellido")})
 public class Usuarios implements Serializable {
 
+    @Size(max = 2147483647)
+    @Column(name = "contrasenia")
+    private String contrasenia;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -165,6 +169,14 @@ public class Usuarios implements Serializable {
     @Override
     public String toString() {
         return "modelos.Usuarios[ idUsuario=" + idUsuario + " ]";
+    }
+
+    public String getContrasenia() {
+        return contrasenia;
+    }
+
+    public void setContrasenia(String contrasenia) {
+        this.contrasenia = contrasenia;
     }
     
 }

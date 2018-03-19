@@ -5,6 +5,7 @@
  */
 package service;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -17,22 +18,25 @@ import modelos.Usuarios;
  * @author desap
  */
 @Stateless
-@Path("consulta")
-public class PruebaService {
+@Path("login")
+public class LoginService {
   @PersistenceContext(unitName = "proyectPU")
     private EntityManager em;
    
    @POST
-    public void conuslta(Usuarios usuario){
-        String  qlString ="select * from usuario where codigoUsuaio= " + usuario.getCodigoUsuario() + " and contrasenia = " + usuario.getContrasenia();
+    public boolean conuslta(Usuarios usuario){
+        boolean logueado= false;
+        String  qlString ="select * from usuario where codigoUsuaio= \'" + usuario.getCodigoUsuario() + "\' and contrasenia = \'" + usuario.getContrasenia()+"\'";
         Query query = em.createNativeQuery(qlString, Usuarios.class);
-        int usuarioLog = query.getMaxResults();
-        if(usuarioLog>0){
+        List usuarioLog = query.getResultList();
+        if(usuarioLog.size()>0){
             System.out.println("Logeado");
+             logueado= true;
         }else{
             System.out.println("No logeado");
+             logueado= false;
         }
-       
+       return  logueado;
     }
     
 }

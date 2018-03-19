@@ -2,16 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/E:/IS2/is2_2018/backend/proyect/src/java/service/AbstractFacade.java</file>
-            <file>file:/E:/IS2/is2_2018/backend/proyect/src/java/service/ApplicationConfig.java</file>
-            <file>file:/E:/IS2/is2_2018/backend/proyect/src/java/service/UserStoriesFacadeREST.java</file>
-            <file>file:/E:/IS2/is2_2018/backend/proyect/src/java/service/BacklogFacadeREST.java</file>
-            <file>file:/E:/IS2/is2_2018/backend/proyect/src/java/service/RolesFacadeREST.java</file>
-            <file>file:/E:/IS2/is2_2018/backend/proyect/src/java/service/SprintsFacadeREST.java</file>
-            <file>file:/E:/IS2/is2_2018/backend/proyect/src/java/service/UsuariosFacadeREST.java</file>
-            <file>file:/E:/IS2/is2_2018/backend/proyect/src/java/service/PruebaService.java</file>
-            <file>file:/E:/IS2/is2_2018/backend/proyect/nbproject/build-impl.xml</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
