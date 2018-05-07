@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Registro</string>
+    <string name="text_accounts">Todas las cuentas</string>
+    <string name="hint_name">Nombre</string>
+    <string name="hint_email">Correo</string>
+    <string name="hint_password">Contraseña</string>
+    <string name="hint_confirm_password">Confirme la contraseña</string>
+    <string name="text_login">Login</string>
+    <string name="text_register">Registrar</string>
+    <string name="error_message_name">Ingrese Nombre completo</string>
+    <string name="error_message_email">Ingrese un correo válido</string>
+    <string name="error_message_age">Ingrese su edad</string>
+    <string name="error_message_password">Ingrese el password</string>
+    <string name="success_message">Registro exitoso</string>
+    <string name="text_not_member">Si no posee cuenta, cree una</string>
+    <string name="text_already_member">¿Ya está registrado? Inicie</string>
+    <string name="error_email_exists">El correo ya existe</string>
+    <string name="error_password_match">;Las contraseñas no coinciden</string>
+    <string name="error_valid_email_password">Correo o contraseña incorrectos</string>
+    <string name="action_settings">Configuración</string>
+    <string name="text_hello">Hola,</string>
+    <string name="text_title">Mundo</string>
+    <string name="already_a_member_login">Already a member? Login</string>
+    <item name="visible" type="id"/>
+    <item name="masked" type="id"/>
+</resources>
