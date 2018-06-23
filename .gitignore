@@ -10,3 +10,4 @@ frontend/.idea/*
 frontend/app/app.iml
 frontend/frontend.iml
 frontend/local.properties
+frontend/.gradle/*
