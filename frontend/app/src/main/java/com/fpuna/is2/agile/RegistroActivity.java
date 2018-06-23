@@ -45,7 +45,7 @@ public class RegistroActivity extends AppCompatActivity {
     public String singleRequest(){
         editText = (EditText) findViewById(R.id.input_name);
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="https://jsonplaceholder.typicode.com/posts/1";
+        String url ="http://10.0.2.2:18080/app/api/usuarios";
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
@@ -57,7 +57,7 @@ public class RegistroActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                editText.setText("That didn't work!");
+                editText.setText("That didn't work!" + error);
             }
         });
 

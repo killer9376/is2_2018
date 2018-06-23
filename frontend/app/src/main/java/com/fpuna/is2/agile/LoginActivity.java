@@ -29,8 +29,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -308,6 +317,37 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             try {
                 // Simulate network access.
                 Thread.sleep(2000);
+                EditText usuario = (EditText) findViewById(R.id.input_name);
+                String user = usuario.getText().toString();
+                EditText contrasenia = (EditText) findViewById(R.id.input_email);
+                String pass = contrasenia.getText().toString();
+
+                RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
+                String url ="http://10.0.2.2:18080/app/api/usuarios";
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+
+                            }
+                        }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                })
+                {
+                    @Override
+                    protected Map<String,String> getParams(){
+                        Map<String,String> params = new HashMap<String, String>();
+                        params.put("user",userAccount.getUsername());
+                        params.put("pass",userAccount.getPassword());
+                        return params;
+                    };
+
+                // Add the request to the RequestQueue.
+                queue.add(stringRequest);
+
             } catch (InterruptedException e) {
                 return false;
             }
