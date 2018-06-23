@@ -7,3 +7,6 @@ backend/proyect/build/
 backend/app/target/
 frontend/app/build/*
 frontend/.idea/*
+frontend/app/app.iml
+frontend/frontend.iml
+frontend/local.properties
