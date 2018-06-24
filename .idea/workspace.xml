@@ -1,139 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6f158c15-3694-4c37-a8fb-914eebdbee99" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/generated-sources/ap-source-output/modelos/Backlog_.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/generated-sources/ap-source-output/modelos/Proyectos_.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/generated-sources/ap-source-output/modelos/RolesTrazabilidad_.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/generated-sources/ap-source-output/modelos/Roles_.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/generated-sources/ap-source-output/modelos/Sprints_.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/generated-sources/ap-source-output/modelos/UserStories_.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/generated-sources/ap-source-output/modelos/Usuarios_.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/META-INF/MANIFEST.MF" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/WEB-INF/classes/.netbeans_automatic_build" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/WEB-INF/classes/.netbeans_update_resources" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/WEB-INF/classes/META-INF/persistence.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/WEB-INF/classes/modelos/Backlog.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/WEB-INF/classes/modelos/Backlog_.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/WEB-INF/classes/modelos/Proyectos.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/WEB-INF/classes/modelos/Proyectos_.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/WEB-INF/classes/modelos/Roles.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/WEB-INF/classes/modelos/RolesTrazabilidad.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/WEB-INF/classes/modelos/RolesTrazabilidad_.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/WEB-INF/classes/modelos/Roles_.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/WEB-INF/classes/modelos/Sprints.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/WEB-INF/classes/modelos/Sprints_.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/WEB-INF/classes/modelos/UserStories.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/WEB-INF/classes/modelos/UserStories_.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/WEB-INF/classes/modelos/Usuarios.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/WEB-INF/classes/modelos/Usuarios_.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/WEB-INF/classes/resouces.res" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/WEB-INF/classes/service/AbstractFacade.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/WEB-INF/classes/service/ApplicationConfig.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/WEB-INF/classes/service/BacklogFacadeREST.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/WEB-INF/classes/service/LoginService.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/WEB-INF/classes/service/ProyectosFacadeREST.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/WEB-INF/classes/service/PruebaService.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/WEB-INF/classes/service/RolesFacadeREST.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/WEB-INF/classes/service/RolesTrazabilidadFacadeREST.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/WEB-INF/classes/service/SprintsFacadeREST.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/WEB-INF/classes/service/UserStoriesFacadeREST.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/WEB-INF/classes/service/UsuariosFacadeREST.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/WEB-INF/glassfish-resources.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/WEB-INF/glassfish-web.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/app.gif" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/cc.gif" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/cg.gif" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/collapse.gif" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/css_master-all.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/expand.gif" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/gfv3ee6.dpf" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/images/background_border_bottom.gif" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/images/bg_gradient.gif" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/images/level1_deselect.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/images/level1_selected-1lvl.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/images/masthead.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/images/masthead_link_enabled.gif" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/images/masthead_link_roll.gif" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/images/pbdis.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/images/pbena.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/images/pbmou.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/images/pbsel.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/images/pname.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/images/primary-enabled.gif" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/images/primary-roll.gif" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/images/secondary-enabled.gif" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/images/tbsel.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/images/tbuns.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/index.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/item.gif" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/og.gif" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/test-resbeans.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/test-resbeans.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/build/web/test-resbeans.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/dist/proyect.war" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/nbproject/ant-deploy.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/nbproject/build-impl.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/nbproject/genfiles.properties" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/nbproject/private/private.properties" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/nbproject/private/private.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/nbproject/project.properties" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/nbproject/project.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/nbproject/rest-build.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/src/conf/MANIFEST.MF" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/src/conf/persistence.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/src/java/modelos/Backlog.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/src/java/modelos/Proyectos.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/src/java/modelos/Roles.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/src/java/modelos/RolesTrazabilidad.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/src/java/modelos/Sprints.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/src/java/modelos/UserStories.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/src/java/modelos/Usuarios.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/src/java/service/AbstractFacade.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/src/java/service/ApplicationConfig.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/src/java/service/BacklogFacadeREST.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/src/java/service/LoginService.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/src/java/service/ProyectosFacadeREST.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/src/java/service/PruebaService.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/src/java/service/RolesFacadeREST.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/src/java/service/RolesTrazabilidadFacadeREST.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/src/java/service/SprintsFacadeREST.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/src/java/service/UserStoriesFacadeREST.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/src/java/service/UsuariosFacadeREST.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/src/proyect.iml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/web/WEB-INF/glassfish-resources.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/web/app.gif" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/web/cc.gif" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/web/cg.gif" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/web/collapse.gif" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/web/css_master-all.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/web/expand.gif" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/web/images/background_border_bottom.gif" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/web/images/bg_gradient.gif" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/web/images/level1_deselect.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/web/images/level1_selected-1lvl.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/web/images/masthead.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/web/images/masthead_link_enabled.gif" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/web/images/masthead_link_roll.gif" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/web/images/pbdis.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/web/images/pbena.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/web/images/pbmou.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/web/images/pbsel.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/web/images/pname.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/web/images/primary-enabled.gif" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/web/images/primary-roll.gif" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/web/images/secondary-enabled.gif" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/web/images/tbsel.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/web/images/tbuns.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/web/index.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/web/item.gif" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/web/og.gif" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/web/test-resbeans.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/web/test-resbeans.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/proyect/web/test-resbeans.js" afterPath="" />
-    </list>
+    <list default="true" id="6f158c15-3694-4c37-a8fb-914eebdbee99" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -150,10 +18,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-9" />
-    <option name="y" value="-9" />
-    <option name="width" value="1938" />
-    <option name="height" value="1048" />
+    <option name="x" value="4" />
+    <option name="y" value="3" />
+    <option name="width" value="1439" />
+    <option name="height" value="1031" />
   </component>
   <component name="ProjectView">
     <navigator currentView="AndroidView" proportions="" version="1">
@@ -171,15 +39,15 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scratches" />
-      <pane id="AndroidView" />
       <pane id="ProjectPane" />
+      <pane id="AndroidView" />
+      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="E:/SDK" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/frontend/prueba1" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/frontend" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -293,23 +161,23 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="0" />
+    <frame x="4" y="3" width="1439" height="1031" extended-state="0" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24960339" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24910778" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
