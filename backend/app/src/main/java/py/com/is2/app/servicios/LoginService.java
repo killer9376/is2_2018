@@ -11,6 +11,7 @@ import javax.persistence.PersistenceContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import py.com.is2.app.modelos.Roles;
@@ -32,7 +33,8 @@ public class LoginService extends AbstractFacade<Roles> {
     }
 
     @POST
-    @Consumes({MediaType.APPLICATION_JSON})
+    @Consumes({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
+    @Produces({MediaType.APPLICATION_JSON})
     public Response validarUsuario(Usuarios entity) {
    
       boolean logueado =false;

@@ -3,6 +3,8 @@ package com.fpuna.is2.agile;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -19,6 +21,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -28,18 +31,27 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.RequestFuture;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -70,6 +82,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+    private  Boolean logeado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -196,6 +209,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(true);
             mAuthTask = new UserLoginTask(email, password);
             mAuthTask.execute((Void) null);
+
         }
     }
 
@@ -304,55 +318,85 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         private final String mEmail;
         private final String mPassword;
+        private Boolean logueado;
+        public final String TAG ="USER_LOGIN_TASK";
 
         UserLoginTask(String email, String password) {
             mEmail = email;
             mPassword = password;
+            logueado=false;
         }
-
+        protected void setLogged(boolean val ){
+            this.logueado = val;
+        }
+        protected Boolean isLogged(){
+            return this.logueado;
+        }
         @Override
         protected Boolean doInBackground(Void... params) {
             // TODO: attempt authentication against a network service.
 
             try {
+                Log.d("PARAMETORS", "doInBackground: " + mEmail +" " + mPassword);
                 // Simulate network access.
-                Thread.sleep(2000);
-                EditText usuario = (EditText) findViewById(R.id.input_name);
-                String user = usuario.getText().toString();
-                EditText contrasenia = (EditText) findViewById(R.id.input_email);
-                String pass = contrasenia.getText().toString();
+//                Thread.sleep(2000);
+
+                String url ="http://10.0.2.2:18080/app/api/login";
+                setLogged(false);
+                RequestFuture<StringRequest> future = RequestFuture.newFuture();
 
                 RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
-                String url ="http://10.0.2.2:18080/app/api/usuarios";
-                StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
-                        new Response.Listener<String>() {
-                            @Override
-                            public void onResponse(String response) {
-
-                            }
-                        }, new Response.ErrorListener() {
+                StringRequest response = null;
+                StringRequest request = new StringRequest(Request.Method.POST,url, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.d(TAG, "onResponse: "+response);
+                    }
+                }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
+                        Log.d(TAG, "onResponse: " +error.toString());
+                        setLogged(false);
                     }
-                });
+                }) {
+                    @Override
+                    public byte[] getBody() throws AuthFailureError {
+                        HashMap<String, String> params2 = new HashMap<String, String>();
+                        params2.put("codigoUsuario",mEmail);
+                        params2.put("contrasenia", mPassword);
+                        return new JSONObject(params2).toString().getBytes();
+                    }
 
-                // Add the request to the RequestQueue.
-                queue.add(stringRequest);
-
-            } catch (InterruptedException e) {
-                return false;
+                    @Override
+                    public String getBodyContentType() {
+                        return "application/json";
+                    }
+                };
+                queue.add(request);
+                try {
+                    response = future.get(3, TimeUnit.SECONDS); // Blocks for at most 10 seconds.
+                } catch (InterruptedException e) {
+                    Log.d(TAG,"interrupted");
+                } catch (ExecutionException e) {
+                    Log.d(TAG,"execution");
+                } catch (TimeoutException e) {
+                    e.printStackTrace();
+                }
+            } catch (Exception e) {
+                return isLogged();
             }
             // TODO: register the new account here.
-            return true;
+            return isLogged();
         }
 
         @Override
         protected void onPostExecute(final Boolean success) {
             mAuthTask = null;
-            showProgress(false);
+            showProgress(success);
 
-            if (success) {
+            if (isLogged()) {
+                Intent intent = new Intent(LoginActivity.this, RegistroActivity.class);
+                startActivity(intent);
                 finish();
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));

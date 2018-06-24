@@ -17,7 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="HardcodedDebugMode">
-        <activity android:name=".RegistroActivity">
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,7 +27,7 @@
         <activity
             android:name=".MainActivity"
             />
-        <activity android:name=".LoginActivity"
+        <activity android:name=".RegistroActivity"
             android:label="@string/title_activity_login"
             />
         <activity android:name=".UsuarioActivity" />
