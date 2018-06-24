@@ -40,7 +40,7 @@ public class LoginService extends AbstractFacade<Roles> {
         try {
           usuario = (Usuarios) em.createNamedQuery("Usuarios.findByCodigoUsuario")
                     .setParameter("codigoUsuario", entity.getCodigoUsuario())
-                    //.setParameter("contrasenia", entity.getContrasenia())
+                    .setParameter("contrasenia", entity.getContrasenia())
                     .getSingleResult();
             System.out.println( usuario.getContrasenia() + " " + usuario.getContrasenia());
             logueado = true;

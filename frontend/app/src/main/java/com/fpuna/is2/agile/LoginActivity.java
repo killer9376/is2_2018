@@ -335,15 +335,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     public void onErrorResponse(VolleyError error) {
 
                     }
-                })
-                {
-                    @Override
-                    protected Map<String,String> getParams(){
-                        Map<String,String> params = new HashMap<String, String>();
-                        params.put("user",userAccount.getUsername());
-                        params.put("pass",userAccount.getPassword());
-                        return params;
-                    };
+                });
 
                 // Add the request to the RequestQueue.
                 queue.add(stringRequest);
