@@ -89,9 +89,20 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         // Set up the login form.
-        mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
-        populateAutoComplete();
+        Bundle bundle = getIntent().getExtras();
 
+        mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
+        if(bundle!=null){
+            mEmailView.setText(bundle.getString("codigoUsuario"));
+        }
+        populateAutoComplete();
+        TextView irRegistro = (TextView) findViewById(R.id.link_registrar);
+        irRegistro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                irRegistro();
+            }
+        });
         mPasswordView = (EditText) findViewById(R.id.password);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -115,7 +126,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
     }
-
+    public void irRegistro(){
+        Intent intent = new Intent(LoginActivity.this,RegistroActivity.class);
+        startActivity(intent);
+        finish();
+    }
     private void populateAutoComplete() {
         if (!mayRequestContacts()) {
             return;
@@ -339,24 +354,31 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             try {
                 Log.d("PARAMETORS", "doInBackground: " + mEmail +" " + mPassword);
                 // Simulate network access.
-//                Thread.sleep(2000);
+
+                setLogged(false);
 
                 String url ="http://10.0.2.2:18080/app/api/login";
-                setLogged(false);
-                RequestFuture<StringRequest> future = RequestFuture.newFuture();
 
                 RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
+
+                RequestFuture<StringRequest> requestFuture=RequestFuture.newFuture();
+
                 StringRequest response = null;
-                StringRequest request = new StringRequest(Request.Method.POST,url, new Response.Listener<String>() {
+                final StringRequest request = new StringRequest(Request.Method.POST,url, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         Log.d(TAG, "onResponse: "+response);
+                        if(!response.isEmpty()){
+                            Intent intent = new Intent(LoginActivity.this, RegistroActivity.class);
+                            startActivity(intent);
+                            finish();
+
+                        }
                     }
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.d(TAG, "onResponse: " +error.toString());
-                        setLogged(false);
                     }
                 }) {
                     @Override
@@ -373,13 +395,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     }
                 };
                 queue.add(request);
+                Thread.sleep(3000);
                 try {
-                    response = future.get(3, TimeUnit.SECONDS); // Blocks for at most 10 seconds.
-                } catch (InterruptedException e) {
-                    Log.d(TAG,"interrupted");
-                } catch (ExecutionException e) {
-                    Log.d(TAG,"execution");
-                } catch (TimeoutException e) {
+                    StringRequest val= requestFuture.get(5,TimeUnit.SECONDS);
+                } catch (InterruptedException |ExecutionException |TimeoutException e) {
                     e.printStackTrace();
                 }
             } catch (Exception e) {

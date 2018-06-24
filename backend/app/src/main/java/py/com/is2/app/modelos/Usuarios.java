@@ -21,6 +21,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -31,7 +32,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Kahani
  */
 @Entity
-@Table(name = "usuarios")
+@Table(name = "usuarios",uniqueConstraints=@UniqueConstraint(columnNames="codigo_usurio"))
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Usuarios.findAll", query = "SELECT u FROM Usuarios u")
@@ -51,6 +52,7 @@ public class Usuarios implements Serializable {
     private Integer idUsuario;
     @Basic(optional = false)
     @NotNull
+    
     @Size(min = 1, max = 2147483647)
     @Column(name = "codigo_usuario")
     private String codigoUsuario;
