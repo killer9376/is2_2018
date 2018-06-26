@@ -12,3 +12,4 @@ frontend/frontend.iml
 frontend/local.properties
 frontend/.gradle/*
 .idea/*
+*.iml
