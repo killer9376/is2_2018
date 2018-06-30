@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Kahani
  */
 @Entity
-@Table(name = "usuarios",uniqueConstraints=@UniqueConstraint(columnNames="codigo_usurio"))
+@Table(name = "usuarios")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Usuarios.findAll", query = "SELECT u FROM Usuarios u")

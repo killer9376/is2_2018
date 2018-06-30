@@ -3,29 +3,25 @@ package com.fpuna.is2.agile;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.app.LoaderManager.LoaderCallbacks;
-
+import android.app.ProgressDialog;
 import android.content.CursorLoader;
+import android.content.Intent;
 import android.content.Loader;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
-
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -33,25 +29,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.DefaultRetryPolicy;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.RequestFuture;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-
-import org.json.JSONObject;
+import com.fpuna.is2.agile.acceso.RetrofitClientInstance;
+import com.fpuna.is2.agile.modelos.Usuario;
+import com.fpuna.is2.agile.servicios.LoginService;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -59,6 +46,8 @@ import static android.Manifest.permission.READ_CONTACTS;
  * A login screen that offers login via email/password.
  */
 public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
+
+    ProgressDialog progressDoalog;
 
     /**
      * Id to identity READ_CONTACTS permission request.
@@ -103,28 +92,55 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 irRegistro();
             }
         });
-        mPasswordView = (EditText) findViewById(R.id.password);
-        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == EditorInfo.IME_ACTION_DONE || id == EditorInfo.IME_NULL) {
-                    attemptLogin();
-                    return true;
-                }
-                return false;
-            }
-        });
 
         Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                attemptLogin();
+             llamadaInicia();
             }
         });
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
+    }
+    public void llamadaInicia(){
+        progressDoalog = new ProgressDialog(LoginActivity.this);
+        progressDoalog.setMessage("Cargando....");
+        progressDoalog.show();
+        String user = ( ((AutoCompleteTextView) findViewById(R.id.email)).getText()).toString();
+        String pass = ( ((EditText) findViewById(R.id.password)).getText()).toString();
+        iniciaSesion(user,pass);
+    }
+    public void iniciaSesion(String user, String pass){
+
+        LoginService service = RetrofitClientInstance.getRetrofitInstance().create(LoginService.class);
+        Usuario usuario = new Usuario();
+        usuario.setCodigoUsuario(user);
+        usuario.setContrasenia(pass);
+        Call<Usuario> call = service.login(usuario);
+
+        call.enqueue(new Callback<Usuario>() {
+            @Override
+            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                progressDoalog.dismiss();
+                Usuario u = response.body();
+                if(u!=null){
+                    Toast.makeText(LoginActivity.this,"Work!" + u.getCodigoUsuario(), Toast.LENGTH_SHORT).show();
+                }else{
+                    Log.d("USUARIO NULL", "onResponse: ");
+                    Toast.makeText(LoginActivity.this,"Por favor, verifique los datos ingresados" , Toast.LENGTH_LONG).show();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<Usuario> call, Throwable t) {
+                progressDoalog.dismiss();
+                Toast.makeText(LoginActivity.this,"Por favor, verifique los datos ingresados" , Toast.LENGTH_LONG).show();
+            }
+        });
+
     }
     public void irRegistro(){
         Intent intent = new Intent(LoginActivity.this,RegistroActivity.class);
@@ -352,55 +368,55 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             // TODO: attempt authentication against a network service.
 
             try {
-                Log.d("PARAMETORS", "doInBackground: " + mEmail +" " + mPassword);
-                // Simulate network access.
-
-                setLogged(false);
-
-                String url ="http://10.0.2.2:18080/app/api/login";
-
-                RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
-
-                RequestFuture<StringRequest> requestFuture=RequestFuture.newFuture();
-
-                StringRequest response = null;
-                final StringRequest request = new StringRequest(Request.Method.POST,url, new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        Log.d(TAG, "onResponse: "+response);
-                        if(!response.isEmpty()){
-                            Intent intent = new Intent(LoginActivity.this, RegistroActivity.class);
-                            startActivity(intent);
-                            finish();
-
-                        }
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.d(TAG, "onResponse: " +error.toString());
-                    }
-                }) {
-                    @Override
-                    public byte[] getBody() throws AuthFailureError {
-                        HashMap<String, String> params2 = new HashMap<String, String>();
-                        params2.put("codigoUsuario",mEmail);
-                        params2.put("contrasenia", mPassword);
-                        return new JSONObject(params2).toString().getBytes();
-                    }
-
-                    @Override
-                    public String getBodyContentType() {
-                        return "application/json";
-                    }
-                };
-                queue.add(request);
-                Thread.sleep(3000);
-                try {
-                    StringRequest val= requestFuture.get(5,TimeUnit.SECONDS);
-                } catch (InterruptedException |ExecutionException |TimeoutException e) {
-                    e.printStackTrace();
-                }
+//                Log.d("PARAMETORS", "doInBackground: " + mEmail +" " + mPassword);
+//                // Simulate network access.
+//
+//                setLogged(false);
+//
+//                String url ="http://10.0.2.2:18080/app/api/login";
+//
+//                RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
+//
+//                RequestFuture<StringRequest> requestFuture=RequestFuture.newFuture();
+//
+//                StringRequest response = null;
+//                final StringRequest request = new StringRequest(Request.Method.POST,url, new Response.Listener<String>() {
+//                    @Override
+//                    public void onResponse(String response) {
+//                        Log.d(TAG, "onResponse: "+response);
+//                        if(!response.isEmpty()){
+//                            Intent intent = new Intent(LoginActivity.this, RegistroActivity.class);
+//                            startActivity(intent);
+//                            finish();
+//
+//                        }
+//                    }
+//                }, new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        Log.d(TAG, "onResponse: " +error.toString());
+//                    }
+//                }) {
+//                    @Override
+//                    public byte[] getBody() throws AuthFailureError {
+//                        HashMap<String, String> params2 = new HashMap<String, String>();
+//                        params2.put("codigoUsuario",mEmail);
+//                        params2.put("contrasenia", mPassword);
+//                        return new JSONObject(params2).toString().getBytes();
+//                    }
+//
+//                    @Override
+//                    public String getBodyContentType() {
+//                        return "application/json";
+//                    }
+//                };
+//                queue.add(request);
+//                Thread.sleep(3000);
+//                try {
+//                    StringRequest val= requestFuture.get(5,TimeUnit.SECONDS);
+//                } catch (InterruptedException |ExecutionException |TimeoutException e) {
+//                    e.printStackTrace();
+//                }
             } catch (Exception e) {
                 return isLogged();
             }

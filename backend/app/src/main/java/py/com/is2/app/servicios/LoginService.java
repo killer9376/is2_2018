@@ -36,18 +36,15 @@ public class LoginService extends AbstractFacade<Roles> {
     @Consumes({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
     @Produces({MediaType.APPLICATION_JSON})
     public Response validarUsuario(Usuarios entity) {
-   
-      boolean logueado =false;
-       Usuarios usuario=null;
+          Usuarios usuario=null;
         try {
           usuario = (Usuarios) em.createNamedQuery("Usuarios.findByCodigoUsuario")
                     .setParameter("codigoUsuario", entity.getCodigoUsuario())
                     .setParameter("contrasenia", entity.getContrasenia())
                     .getSingleResult();
-            System.out.println( usuario.getContrasenia() + " " + usuario.getContrasenia());
-            logueado = true;
+
         } catch (Exception e) {
-             
+             throw new InternalError("Error");
         }
          return Response.ok(usuario).build();
     }
