@@ -23,16 +23,27 @@
     <string name="desc_proyecto">Descripción del Proyecto</string>
     <string name="year_proyecto">Año</string>
     <string name="fecha_proyecto">Fecha de inicio del Proyecto</string>
-    <string name="lbl_btn_crear_proyecto">Crear Proyecto</string>
 
     <!-- Strings de Usuarios -->
     <string name="codigo_user_buscar">Código de Usuario</string>
     <string name="nombre_user">Nombre del Usuario</string>
     <string name="apell_user">Apellido del Usuario</string>
-    <string name="lbl_btn_buscar_user">Buscar</string>
-    <string name="lbl_btn_crear_user">Crear</string>
-    <string name="lbl_btn_modif_user">Modificar</string>
-    <string name="lbl_btn_eliminar_user">Eliminar</string>
+
+    <!-- Strings de Tareas -->
+    <string name="codigo_tarea_buscar">Código de Tarea</string>
+    <string name="nombre_tarea">Nombre de la Tarea</string>
+    <string name="desc_tarea">Descripción de la Tarea</string>
+    <string name="duracion_tarea">Duración de la Tarea</string>
+    <string name="fecha_inicio_tarea">Fecha Inicio de la Tarea</string>
+    <string name="fecha_fin_tarea">Fecha Fin de la Tarea</string>
+
+
+
+    <!-- Strings de Botones -->
+    <string name="lbl_btn_buscar">Buscar</string>
+    <string name="lbl_btn_crear">Crear</string>
+    <string name="lbl_btn_modif">Modificar</string>
+    <string name="lbl_btn_eliminar">Eliminar</string>
 
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."

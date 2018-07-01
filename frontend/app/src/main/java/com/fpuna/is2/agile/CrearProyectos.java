@@ -59,7 +59,7 @@ public class CrearProyectos extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        vista = inflater.inflate(R.layout.fragment_buscar_proyectos, container, false);
+        vista = inflater.inflate(R.layout.fragment_crear_proyectos, container, false);
 
         fecha_ = (TextView) vista.findViewById(R.id.input_fecha_proyecto);
 
