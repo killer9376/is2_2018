@@ -7,32 +7,33 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 
-public class BuscarUsuario extends Fragment {
+public class ModificarUsuario extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g.4 ARG_ITEM_NUMBER
-    //private static final String ARG_PARAM1 = "param1";
-    //private static final String ARG_PARAM2 = "param2";
+    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 
     // TODO: Rename and change types of parameters
-    //private String mParam1;
-    //private String mParam2;
     View vista;
-    ListView ListaUser;
+    Button btnModificar;
+    Button btnEliminar;
+    Spinner spinner;
 
     //private OnFragmentInteractionListener mListener;
 
-    public BuscarUsuario() {
+    public ModificarUsuario() {
         // Required empty public constructor
     }
 
+
     // TODO: Rename and change types and number of parameters
-    /*public static BuscarUsuario newInstance(String param1, String param2) {
-        BuscarUsuario fragment = new BuscarUsuario();
+    /*public static ModificarUsuario newInstance(String param1, String param2) {
+        ModificarUsuario fragment = new ModificarUsuario();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -43,41 +44,50 @@ public class BuscarUsuario extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        vista = inflater.inflate(R.layout.fragment_buscar_usuario, container, false);
-
-        ListaUser = (ListView) vista.findViewById(R.id.lisViewUser);
-
-        ArrayList<String> listaUsr = new ArrayList<>();
-        listaUsr.add("asd");
-        listaUsr.add("dsa");
-        listaUsr.add("alv");
-        listaUsr.add("alv");
-        listaUsr.add("alv");
-        listaUsr.add("alv");
-        listaUsr.add("alv");
-        listaUsr.add("alv");
-        listaUsr.add("alv");
-        listaUsr.add("alv");
-
-
-        ArrayAdapter adaptador = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, listaUsr);
-
-        ListaUser.setAdapter(adaptador);
-
-        ListaUser .setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                //aca va el codigo cuando se selecciona un item de la lista
+        vista = inflater.inflate(R.layout.fragment_modif_usuario, container, false);
+        spinner = (Spinner) vista.findViewById(R.id.idSpinRol);
+        spinner.setOnItemSelectedListener(new Spinner.OnItemSelectedListener(){
+            public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3){
+            }
+            public void onNothingSelected(AdapterView<?> arg0) {
             }
         });
+
+        ArrayList<String> values = new ArrayList();
+        values.add("A");
+        values.add("B");
+        values.add("C");
+        values.add("...");
+        values.add("X");
+        values.add("Y");
+        values.add("Z");
+
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, values);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(dataAdapter);
+
+        btnModificar = (Button) vista.findViewById(R.id.btn_modif_user);
+        btnModificar.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getActivity(), "Modificando..", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btnEliminar = (Button) vista.findViewById(R.id.btn_eliminar_user);
+        btnEliminar.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getActivity(), "Eliminando..", Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
         return vista;
     }

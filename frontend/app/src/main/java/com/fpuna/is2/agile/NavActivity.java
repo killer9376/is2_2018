@@ -143,7 +143,10 @@ public class NavActivity extends AppCompatActivity
                     .replace(R.id.content_frame, new BuscarUsuario())
                     .commit();
         } else if (id == R.id.nav_send) {
-
+            setTitle("Modificar Usuario");
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, new ModificarUsuario())
+                    .commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
