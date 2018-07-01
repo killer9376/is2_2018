@@ -83,9 +83,9 @@ public class NavActivity extends AppCompatActivity
         FragmentManager fragmentManager = getFragmentManager();
 
         if (id == R.id.nav_proyectos_layout) {
-            //setTitle("Login");
+            setTitle("Creación de Proyectos");
             fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame, new FirstFragment())
+                    .replace(R.id.content_frame, new BuscarProyectos())
                     .commit();
         } else if (id == R.id.nav_tareas_layout) {
             fragmentManager.beginTransaction()

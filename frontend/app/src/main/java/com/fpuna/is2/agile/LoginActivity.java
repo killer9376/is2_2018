@@ -32,7 +32,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
+/*
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -41,7 +41,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.RequestFuture;
 import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
+import com.android.volley.toolbox.Volley;*/
 
 import org.json.JSONObject;
 
@@ -351,7 +351,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         protected Boolean doInBackground(Void... params) {
             // TODO: attempt authentication against a network service.
 
-            try {
+            /*try {
                 Log.d("PARAMETORS", "doInBackground: " + mEmail +" " + mPassword);
                 // Simulate network access.
 
@@ -403,7 +403,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 }
             } catch (Exception e) {
                 return isLogged();
-            }
+            }*/
             // TODO: register the new account here.
             return isLogged();
         }

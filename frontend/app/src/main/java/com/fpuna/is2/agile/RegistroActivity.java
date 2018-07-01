@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
+/*import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -20,7 +20,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.RequestFuture;
 import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
+import com.android.volley.toolbox.Volley;*/
 
 import org.json.JSONObject;
 
@@ -76,7 +76,7 @@ public class RegistroActivity extends AppCompatActivity {
         return pass.equals(rePass);
     }
     public String singleRequest(){
-        codigoUsuario = (EditText) findViewById(R.id.input_user);
+        /*codigoUsuario = (EditText) findViewById(R.id.input_user);
         nombre = (EditText) findViewById(R.id.input_name);
         apellido = (EditText) findViewById(R.id.input_last_name);
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -117,7 +117,7 @@ public class RegistroActivity extends AppCompatActivity {
                 return "application/json";
             }
         };
-        queue.add(request);
+        queue.add(request);*/
         return "hi";
     }
 }
