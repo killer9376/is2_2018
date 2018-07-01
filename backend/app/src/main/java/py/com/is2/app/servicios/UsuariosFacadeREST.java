@@ -5,10 +5,12 @@
  */
 package py.com.is2.app.servicios;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -69,6 +71,23 @@ public class UsuariosFacadeREST extends AbstractFacade<Usuarios> {
     @Produces({ MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML,})
     public List<Usuarios> findAll() {
         return super.findAll();
+    }
+    @GET
+    @Path("/obtener/{codigoUsuario}")
+    @Produces({ MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML,})
+    public List<Usuarios> encontrarUsuarios(@PathParam("codigoUsuario") String codigoUsuario) {
+        List<Usuarios> listaUsuarios = new ArrayList<>();
+                     System.out.println(codigoUsuario);
+         try {
+          Query q = em.createNamedQuery("Usuarios.findByCodigo")
+                    .setParameter("codigoUsuario","%"+codigoUsuario.toUpperCase()+"%");       
+        listaUsuarios = (List<Usuarios>) q.getResultList();
+
+        } catch (Exception e){
+             System.out.println(e.getMessage());
+        }
+        
+        return listaUsuarios;
     }
 
     @GET

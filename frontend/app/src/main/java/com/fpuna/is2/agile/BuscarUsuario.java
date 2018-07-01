@@ -11,7 +11,14 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.fpuna.is2.agile.acceso.RetrofitClientInstance;
+import com.fpuna.is2.agile.modelos.Usuario;
+import com.fpuna.is2.agile.servicios.UsuariosService;
+
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
 
 
 public class BuscarUsuario extends Fragment {
@@ -88,6 +95,10 @@ public class BuscarUsuario extends Fragment {
         });
 
         return vista;
+    }
+    public void obtenerUsuarios(List<Usuario> lista){
+        UsuariosService service = RetrofitClientInstance.getRetrofitInstance().create(UsuariosService.class);
+        Call<List<Usuario>> call = service.obtenerUsuario();
     }
 
     // TODO: Rename method, update argument and hook method into UI event
