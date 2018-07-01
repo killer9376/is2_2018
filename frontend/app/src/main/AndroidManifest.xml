@@ -18,7 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="HardcodedDebugMode">
-        <activity android:name=".LoginActivity">
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,7 +27,7 @@
         </activity>
         <activity android:name=".MainActivity" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
         <activity android:name=".UsuarioActivity" />
         <activity android:name=".RegistroActivity" />
