@@ -1,6 +1,7 @@
 package com.fpuna.is2.agile;
 
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -101,14 +102,13 @@ public class NavActivity extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            Toast.makeText(NavActivity.this,"Hacer funcion aqui" , Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(NavActivity.this,LoginActivity.class);
+            startActivity(intent);
+            //Toast.makeText(NavActivity.this,"Hacer funcion aqui" , Toast.LENGTH_LONG).show();
             return true;
         }
 

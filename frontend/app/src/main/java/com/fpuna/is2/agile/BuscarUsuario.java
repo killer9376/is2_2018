@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -39,7 +40,8 @@ public class BuscarUsuario extends Fragment {
     Button btnBuscar;
     ProgressDialog progressDoalog;
     //private OnFragmentInteractionListener mListener;
-
+     ArrayList<String> listaUsr;
+    ArrayAdapter adaptador;
     public BuscarUsuario() {
         // Required empty public constructor
     }
@@ -69,19 +71,8 @@ public class BuscarUsuario extends Fragment {
 
         ListaUser = (ListView) vista.findViewById(R.id.lisViewUser);
 
-        ArrayList<String> listaUsr = new ArrayList<>();
-        listaUsr.add("asd");
-        listaUsr.add("dsa");
-        listaUsr.add("alv");
-        listaUsr.add("alv");
-        listaUsr.add("alv");
-        listaUsr.add("alv");
-        listaUsr.add("alv");
-        listaUsr.add("alv");
-        listaUsr.add("alv");
-        listaUsr.add("alv");
-
-        ArrayAdapter adaptador = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, listaUsr);
+      listaUsr = new ArrayList<>();
+        adaptador = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, listaUsr);
         ListaUser.setAdapter(adaptador);
         ListaUser.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -94,29 +85,47 @@ public class BuscarUsuario extends Fragment {
         btnBuscar.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "Yoni se la come", Toast.LENGTH_LONG).show();
+                obtenerUsuarios();
             }
         });
 
         return vista;
     }
-    public void obtenerUsuarios(List<Usuario> lista){
+    public void obtenerUsuarios(){
 
         progressDoalog = new ProgressDialog(getActivity());
         progressDoalog.setMessage("Cargando....");
         progressDoalog.show();
 
         UsuariosService service = RetrofitClientInstance.getRetrofitInstance().create(UsuariosService.class);
+        Call<List<Usuario>> call =null;
 
-        Call<List<Usuario>> call = service.obtenerUsuarios("");
+        EditText dato = (EditText) getView().findViewById(R.id.cod_user_buscar);
+        String filtro =dato.getText().toString();
+
+        if(filtro.isEmpty()){
+            call  = service.obtenerUsuario();
+        }else{
+            call  = service.obtenerUsuarios(filtro);
+        }
+
+
         call.enqueue(new Callback<List<Usuario>>() {
             @Override
             public void onResponse(Call<List<Usuario>> call, Response<List<Usuario>> response) {
                 progressDoalog.dismiss();
                 int status = response.code();
-                if(status == 204){
+                List<Usuario> data = response.body();
+                if(status == 200){
+                    List<String> dataString =new ArrayList<>();
+                    for (Usuario item: data ) {
+                        dataString.add( "Codigo: "+item.getCodigoUsuario() + " \nNombre: "+ item.getNombre() + " "+item.getApellido());
+                    }
+                  //  Toast.makeText(getActivity(),"Se obtuvieron " + data.size() +" usuarios!" + "Total lista origial: "+listaUsr.size(), Toast.LENGTH_SHORT).show();
+                    adaptador.clear();
+                    adaptador.addAll(dataString);
+                    adaptador.notifyDataSetChanged();
 
-                    Toast.makeText(getActivity(),"Se obtuvieron n usuarios!" , Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(getActivity(),"No se obtuvo resultados." , Toast.LENGTH_LONG).show();
                 }
