@@ -1,0 +1,126 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.fpuna.is2.agile.ModificarTarea">
+
+    <!-- TODO: Update blank fragment layout -->
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fitsSystemWindows="true">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="24dp"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp">
+
+            <!-- Titulo de la Tarea -->
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp">
+                <EditText android:id="@+id/nombre_tarea"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapWords"
+                    android:hint="@string/nombre_tarea" />
+            </android.support.design.widget.TextInputLayout>
+            <!-- Proyecto -->
+            <Spinner
+                android:id="@+id/idSpinProyecto"
+                android:layout_width="match_parent"
+                android:layout_height="49dp" />
+            <!-- Desc. de la Tarea -->
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp">
+                <EditText android:id="@+id/desc_tarea"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapWords"
+                    android:hint="@string/desc_tarea" />
+            </android.support.design.widget.TextInputLayout>
+            <!-- Duración de la Tarea -->
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp">
+                <EditText android:id="@+id/duracion_tarea"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:hint="@string/duracion_tarea" />
+            </android.support.design.widget.TextInputLayout>
+            <!-- Fecha inicio de la tarea -->
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp">
+
+                <EditText android:id="@+id/fecha_inicio_tarea"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="date"
+                    android:hint="@string/fecha_inicio_tarea"
+                    android:focusable="false"
+                    android:clickable="true"/>
+            </android.support.design.widget.TextInputLayout>
+            <!-- Fecha fin de la tarea -->
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp">
+
+                <EditText android:id="@+id/fecha_fin_tarea"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="date"
+                    android:hint="@string/fecha_fin_tarea"
+                    android:focusable="false"
+                    android:clickable="true"/>
+            </android.support.design.widget.TextInputLayout>
+
+
+            <!-- Modificar Button -->
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btn_modif_tarea"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:padding="12dp"
+                android:text="@string/lbl_btn_modif"/>
+            <!-- Eliminar Button -->
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btn_eliminar_tarea"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:padding="12dp"
+                android:text="@string/lbl_btn_eliminar"/>
+            <!-- Crear Button -->
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btn_crear_tarea"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:padding="12dp"
+                android:text="@string/lbl_btn_crear"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

@@ -134,8 +134,9 @@ public class NavActivity extends AppCompatActivity
                     .commit();
 
         } else if (id == R.id.nav_tareas_layout) {
+            setTitle("Tareas");
             fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame, new SecondFragment())
+                    .replace(R.id.content_frame, new BuscarTarea())
                     .commit();
         } else if (id == R.id.nav_usuarios) {
             setTitle("Usuarios");
