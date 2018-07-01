@@ -57,7 +57,7 @@ public class RolesFacadeREST extends AbstractFacade<Roles> {
 
     @GET
     @Path("{id}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
     public Roles find(@PathParam("id") Integer id) {
         return super.find(id);
     }

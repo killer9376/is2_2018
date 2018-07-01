@@ -1,6 +1,7 @@
 package com.fpuna.is2.agile;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.android.volley.toolbox.StringRequest;
 import com.fpuna.is2.agile.acceso.RetrofitClientInstance;
 import com.fpuna.is2.agile.modelos.Usuario;
 import com.fpuna.is2.agile.servicios.UsuariosService;
@@ -42,6 +44,7 @@ public class BuscarUsuario extends Fragment {
     //private OnFragmentInteractionListener mListener;
      ArrayList<String> listaUsr;
     ArrayAdapter adaptador;
+    List<Usuario> listaUsuarios ;
     public BuscarUsuario() {
         // Required empty public constructor
     }
@@ -76,8 +79,33 @@ public class BuscarUsuario extends Fragment {
         ListaUser.setAdapter(adaptador);
         ListaUser.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                //aca va el codigo cuando se selecciona un item de la lista
+            public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
+                Bundle bundle = new Bundle();
+               // bundle.putString();
+                String valor = adapterView.getItemAtPosition(pos).toString();
+                Usuario usuarioSeleccionado = new Usuario();
+                for ( Usuario item : listaUsuarios ) {
+                    String valorAcomparar = item.toString();
+                    if( valorAcomparar.equals(valor)){
+                        usuarioSeleccionado = item;
+                        Toast.makeText(getActivity(),"Se obtuvieron "+item.getIdUsuario(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+                if(usuarioSeleccionado.getIdUsuario()!=null){
+                    bundle.putString("codigoUsuario",usuarioSeleccionado.getCodigoUsuario());
+                    bundle.putInt("idUsuario",usuarioSeleccionado.getIdUsuario());
+                    bundle.putString("nombre",usuarioSeleccionado.getNombre());
+                    bundle.putString("apellido",usuarioSeleccionado.getApellido());
+                }
+
+                ModificarUsuario mUsuario = new ModificarUsuario();
+                mUsuario.setArguments(bundle);
+
+                getActivity().setTitle("Modificar Usuario");
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.content_frame, mUsuario )
+                        .commit();
             }
         });
 
@@ -116,6 +144,7 @@ public class BuscarUsuario extends Fragment {
                 progressDoalog.dismiss();
                 int status = response.code();
                 List<Usuario> data = response.body();
+                listaUsuarios=data;
                 if(status == 200){
                     List<String> dataString =new ArrayList<>();
                     for (Usuario item: data ) {

@@ -7,6 +7,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface UsuariosService {
@@ -18,4 +19,6 @@ public interface UsuariosService {
     Call<Usuario> agregar(@Body Usuario user);
     @GET("usuarios/obtener/{codigoUsuario}")
     Call<List<Usuario>> obtenerUsuarios(@Path( "codigoUsuario") String codigoUsuario);
+    @PUT("usuarios/{id}")
+    Call<Usuario> actualizarUsuario(@Path("id") Integer id, @Body Usuario user);
 }

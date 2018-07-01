@@ -61,4 +61,9 @@ public class Usuario {
     public void setIdRol(Rol idRol) {
         this.idRol = idRol;
     }
+
+    @Override
+    public String toString() {
+        return "Codigo: "+getCodigoUsuario() + " \nNombre: "+ getNombre() + " "+getApellido() ;
+    }
 }

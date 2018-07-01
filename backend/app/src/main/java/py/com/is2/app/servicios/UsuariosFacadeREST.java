@@ -50,7 +50,11 @@ public class UsuariosFacadeREST extends AbstractFacade<Usuarios> {
     @Path("{id}")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public void edit(@PathParam("id") Integer id, Usuarios entity) {
-        super.edit(entity);
+        Usuarios user = super.find(id);
+        user.setNombre(entity.getNombre());
+        user.setApellido(entity.getApellido());
+        user.setIdRol( entity.getIdRol() );
+        super.edit(user);
     }
 
     @DELETE

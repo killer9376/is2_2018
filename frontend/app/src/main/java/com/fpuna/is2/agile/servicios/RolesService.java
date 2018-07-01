@@ -10,8 +10,8 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 
 public interface RolesService {
-    @GET("usuarios")
-    Call<List<Usuario>> obtenerUsuario();
-    @GET("usuarios/{id}")
+    @GET("roles")
+    Call<List<Rol>> obtenerRol();
+    @GET("roles/{id}")
     Call<Rol> obtenerUsuario(@Path("id") Integer id);
 }
