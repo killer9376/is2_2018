@@ -7,7 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -23,6 +25,7 @@ public class BuscarUsuario extends Fragment {
     //private String mParam2;
     View vista;
     ListView ListaUser;
+    Button btnBuscar;
 
     //private OnFragmentInteractionListener mListener;
 
@@ -67,15 +70,20 @@ public class BuscarUsuario extends Fragment {
         listaUsr.add("alv");
         listaUsr.add("alv");
 
-
         ArrayAdapter adaptador = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, listaUsr);
-
         ListaUser.setAdapter(adaptador);
-
-        ListaUser .setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        ListaUser.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 //aca va el codigo cuando se selecciona un item de la lista
+            }
+        });
+
+        btnBuscar = (Button) vista.findViewById(R.id.btn_buscar_user);
+        btnBuscar.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getActivity(), "Yoni se la come", Toast.LENGTH_LONG).show();
             }
         });
 
