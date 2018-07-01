@@ -2,33 +2,19 @@ package com.fpuna.is2.agile;
 
 import android.app.DatePickerDialog;
 import android.app.Fragment;
-import android.content.Context;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Locale;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link BuscarProyectos.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link BuscarProyectos#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class BuscarProyectos extends Fragment {
+
+public class CrearProyectos extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     /*private static final String ARG_PARAM1 = "param1";
@@ -45,13 +31,13 @@ public class BuscarProyectos extends Fragment {
 
     //private OnFragmentInteractionListener mListener;
 
-    public BuscarProyectos() {
+    public CrearProyectos() {
         // Required empty public constructor
     }
 
     /*// TODO: Rename and change types and number of parameters
-    public static BuscarProyectos newInstance(String param1, String param2) {
-        BuscarProyectos fragment = new BuscarProyectos();
+    public static CrearProyectos newInstance(String param1, String param2) {
+        CrearProyectos fragment = new CrearProyectos();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
