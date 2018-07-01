@@ -1,6 +1,7 @@
 package com.fpuna.is2.agile;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -141,12 +142,46 @@ public class ModificarUsuario extends Fragment {
         btnEliminar.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+                eliminar();
                 Toast.makeText(getActivity(), "Eliminando..", Toast.LENGTH_SHORT).show();
             }
         });
 
 
         return vista;
+    }
+    public void eliminar(){
+
+        UsuariosService service = RetrofitClientInstance.getRetrofitInstance().create(UsuariosService.class);
+        Call<Usuario> call =null;
+        call  = service.eliminar(usuarioParam.getIdUsuario());
+
+        call.enqueue(new Callback<Usuario>() {
+            @Override
+            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                progressDoalog.dismiss();
+                int status = response.code();
+                if(response.isSuccessful()){
+                    Toast.makeText(getActivity(), "Eliminado..", Toast.LENGTH_SHORT).show();
+
+                    getActivity().setTitle("Usuarios");
+                    FragmentManager fragmentManager = getFragmentManager();
+                    BuscarUsuario bUsuario = new BuscarUsuario();
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.content_frame, bUsuario )
+                            .commit();
+                }else{
+                    Toast.makeText(getActivity(),"No se pudo eliminar el registro intente mas tarde!." , Toast.LENGTH_LONG).show();
+                }
+            }
+            @Override
+            public void onFailure(Call<Usuario> call, Throwable t) {
+                progressDoalog.dismiss();
+                Toast.makeText(getActivity(),t.getMessage() , Toast.LENGTH_LONG).show();
+            }
+        });
+
+
     }
     public void modificarUsuario(){
         progressDoalog = new ProgressDialog(getActivity());
@@ -176,6 +211,13 @@ public class ModificarUsuario extends Fragment {
                 }else{
                     Toast.makeText(getActivity(),"No se obtuvo resultados." , Toast.LENGTH_LONG).show();
                 }
+                
+                getActivity().setTitle("Usuarios");
+                FragmentManager fragmentManager = getFragmentManager();
+                BuscarUsuario bUsuario = new BuscarUsuario();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.content_frame, bUsuario )
+                        .commit();
             }
             @Override
             public void onFailure(Call<Usuario> call, Throwable t) {

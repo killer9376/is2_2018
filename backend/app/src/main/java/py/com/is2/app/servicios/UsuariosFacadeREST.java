@@ -48,7 +48,7 @@ public class UsuariosFacadeREST extends AbstractFacade<Usuarios> {
 
     @PUT
     @Path("{id}")
-    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Consumes({MediaType.APPLICATION_JSON})
     public void edit(@PathParam("id") Integer id, Usuarios entity) {
         Usuarios user = super.find(id);
         user.setNombre(entity.getNombre());
@@ -57,8 +57,8 @@ public class UsuariosFacadeREST extends AbstractFacade<Usuarios> {
         super.edit(user);
     }
 
-    @DELETE
-    @Path("{id}")
+    @POST
+    @Path("eliminar/{id}")
     public void remove(@PathParam("id") Integer id) {
         super.remove(super.find(id));
     }
