@@ -8,6 +8,7 @@ package py.com.is2.app.servicios;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.validation.ConstraintViolationException;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -42,9 +43,8 @@ public class LoginService extends AbstractFacade<Roles> {
                     .setParameter("codigoUsuario", entity.getCodigoUsuario())
                     .setParameter("contrasenia", entity.getContrasenia())
                     .getSingleResult();
-
-        } catch (Exception e) {
-             throw new InternalError("Error");
+        } catch (Exception e){
+           
         }
          return Response.ok(usuario).build();
     }

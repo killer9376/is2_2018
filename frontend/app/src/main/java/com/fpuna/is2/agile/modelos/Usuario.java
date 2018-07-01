@@ -1,5 +1,7 @@
 package com.fpuna.is2.agile.modelos;
 
+import java.io.Serializable;
+
 public class Usuario {
 
     private Integer idUsuario;

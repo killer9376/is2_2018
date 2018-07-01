@@ -13,6 +13,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.fpuna.is2.agile.modelos.Usuario;
 
 public class NavActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -23,15 +27,15 @@ public class NavActivity extends AppCompatActivity
         setContentView(R.layout.activity_nav);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        String codigoUsuario=null;
+        String nombre=null;
+        Bundle bundle = getIntent().getExtras();
+        if(bundle!=null){
+           codigoUsuario  = (String) bundle.get("codigoUsuario");
+           nombre= (String) bundle.get("nombre");
 
-        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
+        }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -40,7 +44,15 @@ public class NavActivity extends AppCompatActivity
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
+        TextView navUsername = (TextView) headerView.findViewById(R.id.nav_codigo_usuario);
+        TextView navName = (TextView) headerView.findViewById(R.id.nav_nombre_usuario);
+        navUsername.setText(codigoUsuario.toUpperCase());
+        navName.setText(nombre.toUpperCase());
+
         navigationView.setNavigationItemSelectedListener(this);
+
+
     }
 
     @Override
@@ -69,6 +81,7 @@ public class NavActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Toast.makeText(NavActivity.this,"Hacer funcion aqui" , Toast.LENGTH_LONG).show();
             return true;
         }
 

@@ -14,6 +14,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -33,6 +34,7 @@ import com.fpuna.is2.agile.acceso.RetrofitClientInstance;
 import com.fpuna.is2.agile.modelos.Usuario;
 import com.fpuna.is2.agile.servicios.LoginService;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -125,11 +127,17 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             public void onResponse(Call<Usuario> call, Response<Usuario> response) {
                 progressDoalog.dismiss();
                 Usuario u = response.body();
+                u.setContrasenia("");
                 if(u!=null){
-                    Toast.makeText(LoginActivity.this,"Work!" + u.getCodigoUsuario(), Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(LoginActivity.this,NavActivity.class);
+                    intent.putExtra("codigoUsuario", u.getCodigoUsuario());
+                    intent.putExtra("idUsuario", u.getIdUsuario());
+                    intent.putExtra("nombre", u.getNombre() + " "+ u.getApellido() );
+                    startActivity(intent);
+                    finish();
                 }else{
                     Log.d("USUARIO NULL", "onResponse: ");
-                    Toast.makeText(LoginActivity.this,"Por favor, verifique los datos ingresados" , Toast.LENGTH_LONG).show();
+                    Toast.makeText(LoginActivity.this,response.message() , Toast.LENGTH_LONG).show();
                 }
 
             }

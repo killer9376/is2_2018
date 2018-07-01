@@ -99,11 +99,21 @@ public class RegistroActivity extends AppCompatActivity {
             public void onResponse(Call<Usuario> call, Response<Usuario> response) {
                 progressDoalog.dismiss();
                 int status = response.code();
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 if(status == 204){
-                    Toast.makeText(RegistroActivity.this,"Work!" , Toast.LENGTH_SHORT).show();
+
+
+                    Intent intent = new Intent(RegistroActivity.this,LoginActivity.class);
+                    intent.putExtra("codigoUsuario",codigoUsuario.getText().toString());
+                    startActivity(intent);
+                    finish();
+                    Toast.makeText(RegistroActivity.this,"Usuario Creado.!" , Toast.LENGTH_SHORT).show();
                 }else{
-                    Log.d("USUARIO NULL", "onResponse: ");
-                    Toast.makeText(RegistroActivity.this,"Por favor, verifique los datos ingresados" , Toast.LENGTH_LONG).show();
+                    Toast.makeText(RegistroActivity.this,"El código usuario ya existe." , Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -114,50 +124,5 @@ public class RegistroActivity extends AppCompatActivity {
                 Toast.makeText(RegistroActivity.this,t.getMessage() , Toast.LENGTH_LONG).show();
             }
         });
-    }
-    public String singleRequest(){
-//        codigoUsuario = (EditText) findViewById(R.id.input_user);
-//        nombre = (EditText) findViewById(R.id.input_name);
-//        apellido = (EditText) findViewById(R.id.input_last_name);
-//        RequestQueue queue = Volley.newRequestQueue(this);
-//        String url ="http://10.0.2.2:18080/app/api/usuarios";
-//
-//        RequestFuture<StringRequest> requestFuture=RequestFuture.newFuture();
-//
-//        StringRequest response = null;
-//        final StringRequest request = new StringRequest(Request.Method.POST,url, new Response.Listener<String>() {
-//            @Override
-//            public void onResponse(String response) {
-//                Log.d(TAG, "onResponse: "+response);
-//                Intent intent = new Intent(RegistroActivity.this,LoginActivity.class);
-//                intent.putExtra("codigoUsuario",codigoUsuario.getText().toString());
-//                startActivity(intent);
-//                finish();
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                Log.d(TAG, "onResponse: " +error.getStackTrace());
-//            }
-//        }) {
-//            @Override
-//            public byte[] getBody() throws AuthFailureError {
-//                HashMap<String, Object> params2 = new HashMap<String, Object>();
-//                params2.put("codigoUsuario",codigoUsuario.getText().toString());
-//                params2.put("contrasenia", pass.getText().toString());
-//                params2.put("nombre", nombre.getText().toString());
-//                params2.put("apellido", apellido.getText().toString());
-//                params2.put("idRol", 1);
-//
-//                return new JSONObject (params2).toString().getBytes();
-//            }
-//
-//            @Override
-//            public String getBodyContentType() {
-//                return "application/json";
-//            }
-//        };
-//        queue.add(request);
-        return "hi";
     }
 }
