@@ -2,9 +2,6 @@ package com.fpuna.is2.agile;
 
 import android.app.FragmentManager;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -21,10 +18,12 @@ import com.fpuna.is2.agile.modelos.Usuario;
 public class NavActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    NavigationView navigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nav);
+        hideItem();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         String codigoUsuario=null;
@@ -53,6 +52,15 @@ public class NavActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
 
+    }
+
+    private void hideItem()
+    {
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        Menu nav_Menu = navigationView.getMenu();
+        if (0==1){ //agregar la wea de comprobación pa la wea de ocultar items del nav
+            nav_Menu.findItem(R.id.nav_tareas_layout).setVisible(false);
+        }
     }
 
     @Override
@@ -98,14 +106,17 @@ public class NavActivity extends AppCompatActivity
         if (id == R.id.nav_proyectos_layout) {
             setTitle("Creación de Proyectos");
             fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame, new BuscarProyectos())
+                    .replace(R.id.content_frame, new CrearProyectos())
                     .commit();
         } else if (id == R.id.nav_tareas_layout) {
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame, new SecondFragment())
                     .commit();
-        } else if (id == R.id.nav_share) {
-
+        } else if (id == R.id.nav_usuarios) {
+            setTitle("Usuarios");
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, new BuscarUsuario())
+                    .commit();
         } else if (id == R.id.nav_send) {
 
         }
