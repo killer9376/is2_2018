@@ -1,6 +1,8 @@
 package com.fpuna.is2.agile;
 
 import android.app.Fragment;
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +21,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class BuscarUsuario extends Fragment {
@@ -33,7 +37,7 @@ public class BuscarUsuario extends Fragment {
     View vista;
     ListView ListaUser;
     Button btnBuscar;
-
+    ProgressDialog progressDoalog;
     //private OnFragmentInteractionListener mListener;
 
     public BuscarUsuario() {
@@ -97,33 +101,36 @@ public class BuscarUsuario extends Fragment {
         return vista;
     }
     public void obtenerUsuarios(List<Usuario> lista){
+
+        progressDoalog = new ProgressDialog(getActivity());
+        progressDoalog.setMessage("Cargando....");
+        progressDoalog.show();
+
         UsuariosService service = RetrofitClientInstance.getRetrofitInstance().create(UsuariosService.class);
-        Call<List<Usuario>> call = service.obtenerUsuario();
+
+        Call<List<Usuario>> call = service.obtenerUsuarios("");
+        call.enqueue(new Callback<List<Usuario>>() {
+            @Override
+            public void onResponse(Call<List<Usuario>> call, Response<List<Usuario>> response) {
+                progressDoalog.dismiss();
+                int status = response.code();
+                if(status == 204){
+
+                    Toast.makeText(getActivity(),"Se obtuvieron n usuarios!" , Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(getActivity(),"No se obtuvo resultados." , Toast.LENGTH_LONG).show();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<List<Usuario>> call, Throwable t) {
+                progressDoalog.dismiss();
+                Toast.makeText(getActivity(),t.getMessage() , Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    /*public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }*/
 
     /**
      * This interface must be implemented by activities that contain this

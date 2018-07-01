@@ -72,6 +72,7 @@ public class UsuariosFacadeREST extends AbstractFacade<Usuarios> {
     public List<Usuarios> findAll() {
         return super.findAll();
     }
+    
     @GET
     @Path("/obtener/{codigoUsuario}")
     @Produces({ MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML,})
