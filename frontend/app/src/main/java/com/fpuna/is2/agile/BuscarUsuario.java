@@ -5,6 +5,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 
 public class BuscarUsuario extends Fragment {
@@ -17,6 +22,7 @@ public class BuscarUsuario extends Fragment {
     //private String mParam1;
     //private String mParam2;
     View vista;
+    ListView ListaUser;
 
     //private OnFragmentInteractionListener mListener;
 
@@ -37,10 +43,8 @@ public class BuscarUsuario extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        /*if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }*/
+
+
     }
 
     @Override
@@ -49,6 +53,31 @@ public class BuscarUsuario extends Fragment {
         // Inflate the layout for this fragment
         vista = inflater.inflate(R.layout.fragment_buscar_usuario, container, false);
 
+        ListaUser = (ListView) vista.findViewById(R.id.lisViewUser);
+
+        ArrayList<String> listaUsr = new ArrayList<>();
+        listaUsr.add("asd");
+        listaUsr.add("dsa");
+        listaUsr.add("alv");
+        listaUsr.add("alv");
+        listaUsr.add("alv");
+        listaUsr.add("alv");
+        listaUsr.add("alv");
+        listaUsr.add("alv");
+        listaUsr.add("alv");
+        listaUsr.add("alv");
+
+
+        ArrayAdapter adaptador = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, listaUsr);
+
+        ListaUser.setAdapter(adaptador);
+
+        ListaUser .setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                //aca va el codigo cuando se selecciona un item de la lista
+            }
+        });
 
         return vista;
     }
