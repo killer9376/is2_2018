@@ -36,6 +36,7 @@ public class RegistroActivity extends AppCompatActivity {
     EditText apellido;
     EditText pass;
     EditText rePass;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,15 +106,13 @@ public class RegistroActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 if(status == 204){
-
-
                     Intent intent = new Intent(RegistroActivity.this,LoginActivity.class);
                     intent.putExtra("codigoUsuario",codigoUsuario.getText().toString());
                     startActivity(intent);
                     finish();
                     Toast.makeText(RegistroActivity.this,"Usuario Creado.!" , Toast.LENGTH_SHORT).show();
                 }else{
-                    Toast.makeText(RegistroActivity.this,"El código usuario ya existe." , Toast.LENGTH_LONG).show();
+                    Toast.makeText(RegistroActivity.this,"El cï¿½digo usuario ya existe." , Toast.LENGTH_LONG).show();
                 }
 
             }

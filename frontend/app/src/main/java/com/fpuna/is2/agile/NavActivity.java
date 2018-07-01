@@ -10,28 +10,48 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.fpuna.is2.agile.modelos.Usuario;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class NavActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     NavigationView navigationView;
+    Integer idUsuario;
+
+    public Integer getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(Integer idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nav);
-        hideItem();
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         String codigoUsuario=null;
         String nombre=null;
+        Integer idRol=null;
         Bundle bundle = getIntent().getExtras();
         if(bundle!=null){
+            Integer id = (Integer)bundle.get("idUsuario");
+            this.setIdUsuario(id);
            codigoUsuario  = (String) bundle.get("codigoUsuario");
            nombre= (String) bundle.get("nombre");
+           idRol= (Integer) bundle.get("idRol");
+           hideItem(idRol);
 
         }
 
@@ -50,16 +70,15 @@ public class NavActivity extends AppCompatActivity
         navName.setText(nombre.toUpperCase());
 
         navigationView.setNavigationItemSelectedListener(this);
-
-
     }
 
-    private void hideItem()
+    private void hideItem(Integer idRol)
     {
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         Menu nav_Menu = navigationView.getMenu();
-        if (0==1){ //agregar la wea de comprobación pa la wea de ocultar items del nav
-            nav_Menu.findItem(R.id.nav_tareas_layout).setVisible(false);
+        if (idRol != 1){
+            //agregar la wea de comprobación pa la wea de ocultar items del nav
+            nav_Menu.findItem(R.id.nav_usuarios).setVisible(false);
         }
     }
 
@@ -104,10 +123,16 @@ public class NavActivity extends AppCompatActivity
         FragmentManager fragmentManager = getFragmentManager();
 
         if (id == R.id.nav_proyectos_layout) {
+            Bundle bundle = new Bundle();
+
+            bundle.putInt("idUsuario", this.getIdUsuario() );
             setTitle("Creación de Proyectos");
+            CrearProyectos cProyecto = new CrearProyectos();
+            cProyecto.setArguments(bundle);
             fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame, new CrearProyectos())
+                    .replace(R.id.content_frame, cProyecto )
                     .commit();
+
         } else if (id == R.id.nav_tareas_layout) {
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame, new SecondFragment())

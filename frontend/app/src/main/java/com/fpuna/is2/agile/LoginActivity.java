@@ -133,6 +133,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     intent.putExtra("codigoUsuario", u.getCodigoUsuario());
                     intent.putExtra("idUsuario", u.getIdUsuario());
                     intent.putExtra("nombre", u.getNombre() + " "+ u.getApellido() );
+                    intent.putExtra("idRol",u.getIdRol().getIdRol());
                     startActivity(intent);
                     finish();
                 }else{
