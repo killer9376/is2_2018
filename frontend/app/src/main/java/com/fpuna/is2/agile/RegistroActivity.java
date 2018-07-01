@@ -113,7 +113,7 @@ public class RegistroActivity extends AppCompatActivity {
                     finish();
                     Toast.makeText(RegistroActivity.this,"Usuario Creado.!" , Toast.LENGTH_SHORT).show();
                 }else{
-                    Toast.makeText(RegistroActivity.this,"El cÃ³digo usuario ya existe." , Toast.LENGTH_LONG).show();
+                    Toast.makeText(RegistroActivity.this,"El código usuario ya existe." , Toast.LENGTH_LONG).show();
                 }
 
             }
