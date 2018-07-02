@@ -46,7 +46,6 @@ public class ProyectosFacadeREST extends AbstractFacade<Proyectos> {
     @Path("{id}")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public void edit(@PathParam("id") Integer id, Proyectos entity) {
-       
         super.edit(entity);
     }
 

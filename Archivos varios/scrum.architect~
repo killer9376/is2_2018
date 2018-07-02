@@ -209,7 +209,7 @@
     <column id="COL56" populated="true" UUID="c28d7924-2400-475f-a034-a2fd11aac630" autoIncrement="false" autoIncrementSequenceName="sprints_titulo_seq" defaultValue="" name="titulo" nullable="0" physicalName="titulo" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
      <remarks></remarks>
     </column>
-    <column id="COL57" populated="true" UUID="08329896-11b8-4c3a-a2e0-2073e5899aff" autoIncrement="false" autoIncrementSequenceName="sprints_fecha_inicio_seq" defaultValue="" name="fecha_inicio" nullable="1" physicalName="fecha_inicio" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="91" userDefinedTypeUUID="ee349be3-6af2-46e1-b305-975f5354b009" >
+    <column id="COL57" populated="true" UUID="08329896-11b8-4c3a-a2e0-2073e5899aff" autoIncrement="false" autoIncrementSequenceName="sprints_fecha_inicio_seq" defaultValue="" name="fecha_inicio" nullable="0" physicalName="fecha_inicio" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
      <remarks></remarks>
     </column>
     <column id="COL58" populated="true" UUID="89e71892-4c35-48e2-88b3-8a73cc5e8734" autoIncrement="false" autoIncrementSequenceName="sprints_duracion_seq" defaultValue="" name="duracion" nullable="1" physicalName="duracion" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
@@ -301,7 +301,7 @@
   <table-pane table-ref="TAB26" x="560" y="299" bgColor="0xeec994" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB33" x="1087" y="548" bgColor="0xf6bcbc" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB41" x="973" y="330" bgColor="0xc8dccc" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB47" x="760" y="504" bgColor="0xc8dccc" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB47" x="761" y="504" bgColor="0xc8dccc" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB53" x="1127" y="69" bgColor="0xf6bcbc" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB63" x="59" y="268" bgColor="0xc8dccc" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-link relationship-ref="REL71" pkConnection="0.8774509803921569" fkConnection="0.04329004329004329" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="72"/>

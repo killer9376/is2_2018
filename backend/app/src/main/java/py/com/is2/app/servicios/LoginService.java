@@ -8,7 +8,6 @@ package py.com.is2.app.servicios;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.validation.ConstraintViolationException;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -33,7 +32,7 @@ public class LoginService extends AbstractFacade<Roles> {
         super(Roles.class);
     }
 
-    @POST
+   @POST
     @Consumes({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
     @Produces({MediaType.APPLICATION_JSON})
     public Response validarUsuario(Usuarios entity) {

@@ -6,10 +6,7 @@
 package py.com.is2.app.modelos;
 
 import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,14 +16,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -38,20 +31,12 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Sprints.findAll", query = "SELECT s FROM Sprints s")
     , @NamedQuery(name = "Sprints.findByIdSprint", query = "SELECT s FROM Sprints s WHERE s.idSprint = :idSprint")
-    , @NamedQuery(name = "Sprints.findTareas", query = "SELECT s FROM Sprints s ")    
     , @NamedQuery(name = "Sprints.findByTitulo", query = "SELECT s FROM Sprints s WHERE s.titulo = :titulo")
     , @NamedQuery(name = "Sprints.findByFechaInicio", query = "SELECT s FROM Sprints s WHERE s.fechaInicio = :fechaInicio")
     , @NamedQuery(name = "Sprints.findByDuracion", query = "SELECT s FROM Sprints s WHERE s.duracion = :duracion")
     , @NamedQuery(name = "Sprints.findByDescripcion", query = "SELECT s FROM Sprints s WHERE s.descripcion = :descripcion")
     , @NamedQuery(name = "Sprints.findByFechaFin", query = "SELECT s FROM Sprints s WHERE s.fechaFin = :fechaFin")})
 public class Sprints implements Serializable {
-
-    @Size(max = 2147483647)
-    @Column(name = "fecha_inicio")
-    private String fechaInicio;
-    @JoinColumn(name = "id_user_story", referencedColumnName = "id_user_story")
-    @ManyToOne
-    private UserStories idUserStory;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -64,6 +49,11 @@ public class Sprints implements Serializable {
     @Size(min = 1, max = 2147483647)
     @Column(name = "titulo")
     private String titulo;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 2147483647)
+    @Column(name = "fecha_inicio")
+    private String fechaInicio;
     @Column(name = "duracion")
     private Integer duracion;
     @Basic(optional = false)
@@ -76,11 +66,15 @@ public class Sprints implements Serializable {
     @Size(min = 1, max = 2147483647)
     @Column(name = "fecha_fin")
     private String fechaFin;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idSprint")
-    private List<UserStories> userStoriesList;
     @JoinColumn(name = "id_proyecto", referencedColumnName = "id_proyecto")
     @ManyToOne(optional = false)
     private Proyectos idProyecto;
+    @JoinColumn(name = "id_user_story", referencedColumnName = "id_user_story")
+    @ManyToOne(optional = false)
+    private UserStories idUserStory;
+    @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
+    @ManyToOne
+    private Usuarios idUsuario;
 
     public Sprints() {
     }
@@ -89,9 +83,10 @@ public class Sprints implements Serializable {
         this.idSprint = idSprint;
     }
 
-    public Sprints(Integer idSprint, String titulo, String descripcion, String fechaFin) {
+    public Sprints(Integer idSprint, String titulo, String fechaInicio, String descripcion, String fechaFin) {
         this.idSprint = idSprint;
         this.titulo = titulo;
+        this.fechaInicio = fechaInicio;
         this.descripcion = descripcion;
         this.fechaFin = fechaFin;
     }
@@ -112,6 +107,13 @@ public class Sprints implements Serializable {
         this.titulo = titulo;
     }
 
+    public String getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public void setFechaInicio(String fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
 
     public Integer getDuracion() {
         return duracion;
@@ -137,21 +139,28 @@ public class Sprints implements Serializable {
         this.fechaFin = fechaFin;
     }
 
-    @XmlTransient
-    public List<UserStories> getUserStoriesList() {
-        return userStoriesList;
-    }
-
-    public void setUserStoriesList(List<UserStories> userStoriesList) {
-        this.userStoriesList = userStoriesList;
-    }
-
     public Proyectos getIdProyecto() {
         return idProyecto;
     }
 
     public void setIdProyecto(Proyectos idProyecto) {
         this.idProyecto = idProyecto;
+    }
+
+    public UserStories getIdUserStory() {
+        return idUserStory;
+    }
+
+    public void setIdUserStory(UserStories idUserStory) {
+        this.idUserStory = idUserStory;
+    }
+
+    public Usuarios getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(Usuarios idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     @Override
@@ -177,22 +186,6 @@ public class Sprints implements Serializable {
     @Override
     public String toString() {
         return "py.com.is2.app.modelos.Sprints[ idSprint=" + idSprint + " ]";
-    }
-
-    public String getFechaInicio() {
-        return fechaInicio;
-    }
-
-    public void setFechaInicio(String fechaInicio) {
-        this.fechaInicio = fechaInicio;
-    }
-
-    public UserStories getIdUserStory() {
-        return idUserStory;
-    }
-
-    public void setIdUserStory(UserStories idUserStory) {
-        this.idUserStory = idUserStory;
     }
     
 }

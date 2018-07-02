@@ -5,12 +5,10 @@
  */
 package py.com.is2.app.servicios;
 
-import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -21,7 +19,6 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import py.com.is2.app.modelos.Sprints;
-import py.com.is2.app.modelos.Usuarios;
 
 /**
  *
@@ -63,22 +60,6 @@ public class SprintsFacadeREST extends AbstractFacade<Sprints> {
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public Sprints find(@PathParam("id") Integer id) {
         return super.find(id);
-    }
-    @GET
-    @Path("tareas/{idUsuario}/{idProyecto}")
-    @Produces({ MediaType.APPLICATION_JSON})
-    public List<Sprints> find(@PathParam("id") Integer idUsuario,@PathParam("id") Integer idProyecto) {
-        List<Sprints> lista = new ArrayList<>();
-        
-        try {
-          Query q = em.createNamedQuery("Sprints.findTareas");
-                        
-         lista = (List<Sprints>) q.getResultList();
-
-        } catch (Exception e){
-             System.out.println(e.getMessage());
-        }
-        return lista;
     }
 
     @GET

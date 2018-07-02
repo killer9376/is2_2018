@@ -45,6 +45,9 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Usuarios.findByContrasenia", query = "SELECT u FROM Usuarios u WHERE u.contrasenia = :contrasenia")})
 public class Usuarios implements Serializable {
 
+    @OneToMany(mappedBy = "idUsuario")
+    private List<Sprints> sprintsList;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -181,6 +184,15 @@ public class Usuarios implements Serializable {
     @Override
     public String toString() {
         return "py.com.is2.app.modelos.Usuarios[ idUsuario=" + idUsuario + " ]";
+    }
+
+    @XmlTransient
+    public List<Sprints> getSprintsList() {
+        return sprintsList;
+    }
+
+    public void setSprintsList(List<Sprints> sprintsList) {
+        this.sprintsList = sprintsList;
     }
     
 }

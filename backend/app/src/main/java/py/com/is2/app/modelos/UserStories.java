@@ -8,6 +8,7 @@ package py.com.is2.app.modelos;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,7 +17,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -40,9 +40,6 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "UserStories.findByTitulo", query = "SELECT u FROM UserStories u WHERE u.titulo = :titulo")
     , @NamedQuery(name = "UserStories.findByDescripcion", query = "SELECT u FROM UserStories u WHERE u.descripcion = :descripcion")})
 public class UserStories implements Serializable {
-
-    @OneToMany(mappedBy = "idUserStory")
-    private List<Sprints> sprintsList;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -71,9 +68,8 @@ public class UserStories implements Serializable {
         @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")})
     @ManyToMany
     private List<Usuarios> usuariosList;
-    @JoinColumn(name = "id_sprint", referencedColumnName = "id_sprint")
-    @ManyToOne(optional = false)
-    private Sprints idSprint;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUserStory")
+    private List<Sprints> sprintsList;
 
     public UserStories() {
     }
@@ -139,12 +135,13 @@ public class UserStories implements Serializable {
         this.usuariosList = usuariosList;
     }
 
-    public Sprints getIdSprint() {
-        return idSprint;
+    @XmlTransient
+    public List<Sprints> getSprintsList() {
+        return sprintsList;
     }
 
-    public void setIdSprint(Sprints idSprint) {
-        this.idSprint = idSprint;
+    public void setSprintsList(List<Sprints> sprintsList) {
+        this.sprintsList = sprintsList;
     }
 
     @Override
@@ -170,15 +167,6 @@ public class UserStories implements Serializable {
     @Override
     public String toString() {
         return "py.com.is2.app.modelos.UserStories[ idUserStory=" + idUserStory + " ]";
-    }
-
-    @XmlTransient
-    public List<Sprints> getSprintsList() {
-        return sprintsList;
-    }
-
-    public void setSprintsList(List<Sprints> sprintsList) {
-        this.sprintsList = sprintsList;
     }
     
 }

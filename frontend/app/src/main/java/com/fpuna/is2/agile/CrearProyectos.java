@@ -147,15 +147,20 @@ public class CrearProyectos extends Fragment {
             public void onResponse(Call<Proyecto> call, Response<Proyecto> response) {
                 progressDoalog.dismiss();
                 int status = response.code();
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                if(status == 204)
+                if(status == 204) {
+                    TextView nombreProyect = (TextView)getView().findViewById(R.id.input_nombre_proyecto);
+                    TextView descripcionProyect = (TextView)getView().findViewById(R.id.input_desc_proyecto);
+                    TextView anio =(TextView)getView().findViewById(R.id.input_year_proyecto);
+                    TextView fecInicio =(TextView)getView().findViewById(R.id.input_fecha_proyecto);
+
+                    nombreProyect.setText("");
+                    descripcionProyect.setText("");
+                    anio.setText("");
+                    fecInicio.setText("");
+
                     Toast.makeText(getActivity(), "Proyecto Creado.!", Toast.LENGTH_LONG).show();
-                else{
-                    Toast.makeText(getActivity(),"No se pudo realizar la operacion." , Toast.LENGTH_LONG).show();
+                }else{
+                    Toast.makeText(getActivity(),"No se pudo realizar la operacion." + status + response.message(), Toast.LENGTH_LONG).show();
                 }
 
             }
