@@ -5,6 +5,7 @@
  */
 package py.com.is2.app.servicios;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -67,6 +68,23 @@ public class SprintsFacadeREST extends AbstractFacade<Sprints> {
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public List<Sprints> findAll() {
         return super.findAll();
+    }
+    
+    @GET
+    @Path("tareas/{idUsuario}")
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    public List<Sprints> obtenerTareas(@PathParam("idUsuario") Integer id) {
+        List<Sprints> lista = new ArrayList<>();
+        try {
+            System.out.println(id);
+              lista = (List<Sprints>) em.createNamedQuery("Sprints.findAll")
+                    //.setParameter(1,id)
+                    .getSingleResult();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+      
+        return lista;
     }
 
     @GET
