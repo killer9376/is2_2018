@@ -199,6 +199,7 @@ public class ModificarUsuario extends Fragment {
         UsuariosService service = RetrofitClientInstance.getRetrofitInstance().create(UsuariosService.class);
         Call<Usuario> call =null;
         usuarioParam.setIdRol( rolSeleccionado );
+
         call  = service.actualizarUsuario(usuarioParam.getIdUsuario() ,usuarioParam);
 
         call.enqueue(new Callback<Usuario>() {
@@ -211,7 +212,7 @@ public class ModificarUsuario extends Fragment {
                 }else{
                     Toast.makeText(getActivity(),"No se obtuvo resultados." , Toast.LENGTH_LONG).show();
                 }
-                
+
                 getActivity().setTitle("Usuarios");
                 FragmentManager fragmentManager = getFragmentManager();
                 BuscarUsuario bUsuario = new BuscarUsuario();

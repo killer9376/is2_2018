@@ -19,6 +19,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -39,6 +40,9 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "UserStories.findByTitulo", query = "SELECT u FROM UserStories u WHERE u.titulo = :titulo")
     , @NamedQuery(name = "UserStories.findByDescripcion", query = "SELECT u FROM UserStories u WHERE u.descripcion = :descripcion")})
 public class UserStories implements Serializable {
+
+    @OneToMany(mappedBy = "idUserStory")
+    private List<Sprints> sprintsList;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -166,6 +170,15 @@ public class UserStories implements Serializable {
     @Override
     public String toString() {
         return "py.com.is2.app.modelos.UserStories[ idUserStory=" + idUserStory + " ]";
+    }
+
+    @XmlTransient
+    public List<Sprints> getSprintsList() {
+        return sprintsList;
+    }
+
+    public void setSprintsList(List<Sprints> sprintsList) {
+        this.sprintsList = sprintsList;
     }
     
 }

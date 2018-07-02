@@ -38,12 +38,20 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Sprints.findAll", query = "SELECT s FROM Sprints s")
     , @NamedQuery(name = "Sprints.findByIdSprint", query = "SELECT s FROM Sprints s WHERE s.idSprint = :idSprint")
+    , @NamedQuery(name = "Sprints.findTareas", query = "SELECT s FROM Sprints s ")    
     , @NamedQuery(name = "Sprints.findByTitulo", query = "SELECT s FROM Sprints s WHERE s.titulo = :titulo")
     , @NamedQuery(name = "Sprints.findByFechaInicio", query = "SELECT s FROM Sprints s WHERE s.fechaInicio = :fechaInicio")
     , @NamedQuery(name = "Sprints.findByDuracion", query = "SELECT s FROM Sprints s WHERE s.duracion = :duracion")
     , @NamedQuery(name = "Sprints.findByDescripcion", query = "SELECT s FROM Sprints s WHERE s.descripcion = :descripcion")
     , @NamedQuery(name = "Sprints.findByFechaFin", query = "SELECT s FROM Sprints s WHERE s.fechaFin = :fechaFin")})
 public class Sprints implements Serializable {
+
+    @Size(max = 2147483647)
+    @Column(name = "fecha_inicio")
+    private String fechaInicio;
+    @JoinColumn(name = "id_user_story", referencedColumnName = "id_user_story")
+    @ManyToOne
+    private UserStories idUserStory;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -56,9 +64,6 @@ public class Sprints implements Serializable {
     @Size(min = 1, max = 2147483647)
     @Column(name = "titulo")
     private String titulo;
-    @Column(name = "fecha_inicio")
-    @Temporal(TemporalType.DATE)
-    private Date fechaInicio;
     @Column(name = "duracion")
     private Integer duracion;
     @Basic(optional = false)
@@ -107,13 +112,6 @@ public class Sprints implements Serializable {
         this.titulo = titulo;
     }
 
-    public Date getFechaInicio() {
-        return fechaInicio;
-    }
-
-    public void setFechaInicio(Date fechaInicio) {
-        this.fechaInicio = fechaInicio;
-    }
 
     public Integer getDuracion() {
         return duracion;
@@ -179,6 +177,22 @@ public class Sprints implements Serializable {
     @Override
     public String toString() {
         return "py.com.is2.app.modelos.Sprints[ idSprint=" + idSprint + " ]";
+    }
+
+    public String getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public void setFechaInicio(String fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public UserStories getIdUserStory() {
+        return idUserStory;
+    }
+
+    public void setIdUserStory(UserStories idUserStory) {
+        this.idUserStory = idUserStory;
     }
     
 }

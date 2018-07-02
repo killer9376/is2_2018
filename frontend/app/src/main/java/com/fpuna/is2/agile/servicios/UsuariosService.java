@@ -19,8 +19,10 @@ public interface UsuariosService {
     Call<Usuario> agregar(@Body Usuario user);
     @GET("usuarios/obtener/{codigoUsuario}")
     Call<List<Usuario>> obtenerUsuarios(@Path( "codigoUsuario") String codigoUsuario);
+
     @PUT("usuarios/{id}")
     Call<Usuario> actualizarUsuario(@Path("id") Integer id, @Body Usuario user);
+
     @POST("usuarios/eliminar/{id}")
     Call<Usuario> eliminar(@Path("id") Integer id);
 }
