@@ -1,8 +1,15 @@
 package com.fpuna.is2.agile;
 
 import android.app.FragmentManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -10,15 +17,30 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 public class NavActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    Button btn;
     NavigationView navigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nav);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "is2";
+            String description ="is2";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel("defatul", name, importance);
+            channel.setDescription(description);
+            // Register the channel with the system; you can't change the importance
+            // or other notification behaviors after this
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
         hideItem();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -40,6 +62,16 @@ public class NavActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        btn = (Button) findViewById(R.id.button_prueba);
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Create an explicit intent for an Activity in your app
+
+                Toast.makeText(NavActivity.this, "Notificacion de proyecto", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     private void hideItem()
@@ -106,10 +138,31 @@ public class NavActivity extends AppCompatActivity
                     .replace(R.id.content_frame, new BuscarUsuario())
                     .commit();
         } else if (id == R.id.nav_send) {
-            setTitle("Modificar Usuario");
+            /*setTitle("Modificar Usuario");
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame, new ModificarUsuario())
-                    .commit();
+                    .commit();*/
+            Intent intent = new Intent(NavActivity.this, NavActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            PendingIntent pendingIntent = PendingIntent.getActivity(NavActivity.this, 0, intent, 0);
+
+            NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(NavActivity.this, "default")
+                    .setSmallIcon(R.drawable.ic_notificacion)
+                    .setContentTitle("My notification")
+                    .setContentText("Hello World!\nNew line \nHola \nasdfasdfa")
+                    .setStyle(new NotificationCompat.BigTextStyle()
+                            .bigText("Much longer text that cannot fit one line...a" +
+                                    "sdfasdfasljdfjasldfj af \n ajsdfl akjs;fdlaj sdfl"))
+                    .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                    // Set the intent that will fire when the user taps the notification
+                    .setContentIntent(pendingIntent)
+                    .setAutoCancel(true);
+
+            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(NavActivity.this);
+
+            // notificationId is a unique int for each notification that you must define
+            notificationManager.notify(001, mBuilder.build());
+            Toast.makeText(NavActivity.this, "Notificacion de proyecto", Toast.LENGTH_LONG).show();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
