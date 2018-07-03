@@ -9,6 +9,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -48,10 +49,11 @@ public class NavActivity extends AppCompatActivity
         Bundle bundle = getIntent().getExtras();
         if(bundle!=null){
             Integer id = (Integer)bundle.get("idUsuario");
-            this.setIdUsuario(id);
+            idUsuario =id;
            codigoUsuario  = (String) bundle.get("codigoUsuario");
            nombre= (String) bundle.get("nombre");
            idRol= (Integer) bundle.get("idRol");
+
            hideItem(idRol);
 
         }
@@ -124,8 +126,8 @@ public class NavActivity extends AppCompatActivity
 
         if (id == R.id.nav_proyectos_layout) {
             Bundle bundle = new Bundle();
-
-            bundle.putInt("idUsuario", this.getIdUsuario() );
+            Log.d("ID", "onNavigationItemSelected: "+idUsuario);
+            bundle.putInt("idUsuario", idUsuario );
             setTitle("Creación de Proyectos");
             CrearProyectos cProyecto = new CrearProyectos();
             cProyecto.setArguments(bundle);
@@ -134,9 +136,14 @@ public class NavActivity extends AppCompatActivity
                     .commit();
 
         } else if (id == R.id.nav_tareas_layout) {
+            Bundle bundle = new Bundle();
+            bundle.putInt("idUsuario", idUsuario);
+            Log.d("NAV_ACTIVITY", "onNavigationItemSelected: "+idUsuario);
+            BuscarTarea mBuscar = new BuscarTarea();
+            mBuscar.setArguments(bundle);
             setTitle("Tareas");
             fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame, new BuscarTarea())
+                    .replace(R.id.content_frame, mBuscar)
                     .commit();
         } else if (id == R.id.nav_usuarios) {
             setTitle("Usuarios");

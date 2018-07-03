@@ -32,6 +32,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Sprints.findAll", query = "SELECT s FROM Sprints s")
     , @NamedQuery(name = "Sprints.findByIdSprint", query = "SELECT s FROM Sprints s WHERE s.idSprint = :idSprint")
     , @NamedQuery(name = "Sprints.findByIdUser", query = "SELECT s FROM Sprints s WHERE s.idUsuario = :idUsuario")
+    , @NamedQuery(name = "Sprints.findByIdUserMod", query = "SELECT s FROM Sprints s WHERE s.idUsuario = :idUsuario AND UPPER(s.titulo) like :filtro")
     , @NamedQuery(name = "Sprints.findByTitulo", query = "SELECT s FROM Sprints s WHERE s.titulo = :titulo")
     , @NamedQuery(name = "Sprints.findByFechaInicio", query = "SELECT s FROM Sprints s WHERE s.fechaInicio = :fechaInicio")
     , @NamedQuery(name = "Sprints.findByDuracion", query = "SELECT s FROM Sprints s WHERE s.duracion = :duracion")

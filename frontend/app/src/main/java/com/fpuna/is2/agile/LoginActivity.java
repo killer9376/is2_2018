@@ -146,7 +146,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             @Override
             public void onFailure(Call<Usuario> call, Throwable t) {
                 progressDoalog.dismiss();
-                Toast.makeText(LoginActivity.this,"Por favor, verifique los datos ingresados" + t.getMessage() , Toast.LENGTH_LONG).show();
+                Toast.makeText(LoginActivity.this,"Por favor, verifique los datos ingresados" , Toast.LENGTH_LONG).show();
             }
         });
 

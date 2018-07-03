@@ -2,14 +2,18 @@ package com.fpuna.is2.agile;
 
 import android.app.DatePickerDialog;
 import android.app.Fragment;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.fpuna.is2.agile.modelos.Sprint;
 
 import java.util.Calendar;
 
@@ -27,6 +31,7 @@ public class ModificarTarea extends Fragment {
     TextView fechaFin;
     final Calendar cFin = Calendar.getInstance();
     final Calendar cIni = Calendar.getInstance();
+    Sprint tarea;
 
     //private OnFragmentInteractionListener mListener;
 
@@ -52,8 +57,11 @@ public class ModificarTarea extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         vista = inflater.inflate(R.layout.fragment_modif_tarea, container, false);
+
+
         btnCrear = vista.findViewById(R.id.btn_crear_tarea);
         btnModificar = vista.findViewById(R.id.btn_modif_tarea);
         btnEliminar = vista.findViewById(R.id.btn_eliminar_tarea);
@@ -89,7 +97,31 @@ public class ModificarTarea extends Fragment {
                 obtenerFechaFin();
             }
         });
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            tarea =new Sprint();
+            String nombre = bundle.getString("nombreTarea");
+            tarea.setTitulo(nombre);
+            EditText nombreT = (EditText)vista.findViewById(R.id.nombre_tarea);
+            nombreT.setText(nombre);
 
+//            // nombre
+//            Integer idProyecto = bundle.getInt("idProyecto");
+//            EditText nombreUsu = (EditText)vista.findViewById(R.id.);
+//            nombreUsu.setText(nombre);
+//
+//            usuarioParam.setNombre(nombre);
+//            // apellido
+//            Integer duracion = bundle.getInt("duracion");
+//            EditText duracionT = (EditText)vista.findViewById(R.id.duracion_tarea);
+//            duracionT.setText(apellido);
+//            usuarioParam.setApellido(apellido);
+//            // idUsuario
+//            Integer idUsuario = bundle.getInt("idUsuario");
+//            usuarioParam.setIdUsuario(idUsuario);
+
+
+        }
 
         return vista;
     }

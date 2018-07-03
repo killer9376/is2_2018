@@ -14,8 +14,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
-
-import com.android.volley.toolbox.StringRequest;
 import com.fpuna.is2.agile.acceso.RetrofitClientInstance;
 import com.fpuna.is2.agile.modelos.Usuario;
 import com.fpuna.is2.agile.servicios.UsuariosService;
@@ -88,7 +86,7 @@ public class BuscarUsuario extends Fragment {
                     String valorAcomparar = item.toString();
                     if( valorAcomparar.equals(valor)){
                         usuarioSeleccionado = item;
-                        Toast.makeText(getActivity(),"Se obtuvieron "+item.getIdUsuario(), Toast.LENGTH_SHORT).show();
+                        // Toast.makeText(getActivity(),"Se obtuvieron "+item.getIdUsuario(), Toast.LENGTH_SHORT).show();
                     }
                 }
                 if(usuarioSeleccionado.getIdUsuario()!=null){
